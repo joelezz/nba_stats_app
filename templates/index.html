@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Stas App</title>
+</head>
+<body>
+    <header>Welcome to the NBA stats app!</header>
+    <br>
+        <form method="GET"
+              action="{{ url_for('player') }}">
+            <input type="text"
+                   name="name"
+                   placeholder="Full name">
+            <button type="submit">submit</button>
+        </form>
+</body>
+</html>
