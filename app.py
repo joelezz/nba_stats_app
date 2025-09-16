@@ -16,12 +16,31 @@ def home():
 @app.route("/player")
 def player():
     if request.method == 'GET':
-        name = request.args['name']
-        print(name)
-        if name in players[0]["full_name"]:
-            return f'{players[0]}'
-        else:
-            return '<h1>Player not found!</h1>'
+        all_players = []
+        all_players = players._get_players()
+        last_name = request.args['last_name'].lower()
+        first_name = request.args['first_name'].lower()
+        results= []
+
+        for obj in all_players:
+            laste_name = obj["last_name"]
+            firste_name = obj["first_name"]
+            player_idd = obj["id"]
+
+            if last_name == laste_name.lower() or first_name == firste_name.lower():
+                results.append(obj)
+                career = playercareerstats.PlayerCareerStats(player_id=player_idd)
+                career_dict = career.get_dict()
+                print(career_dict.keys())
+                career_data = career_dict['resultSets'][0]  # the first result set
+                print(career_data.keys())
+                career_df = career.get_data_frames()[0]
+                print(career_df[["SEASON_ID", "TEAM_ABBREVIATION", "PTS"]])
+
+
+
+            
+        return render_template('player.html', results=results)
     else:
         return render_template('index.html')
 if __name__ == '__main__':

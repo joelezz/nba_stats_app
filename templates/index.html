@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBA Stas App</title>
+    <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
     <header>Welcome to the NBA stats app!</header>
@@ -11,9 +12,12 @@
         <form method="GET"
               action="{{ url_for('player') }}">
             <input type="text"
-                   name="name"
-                   placeholder="Full name">
-            <button type="submit">submit</button>
+                   name="first_name"
+                   placeholder="First name">
+            <input type="text"
+                   name="last_name"
+                   placeholder="Last name">
+            <button type="submit">Search</button>
         </form>
 </body>
 </html>

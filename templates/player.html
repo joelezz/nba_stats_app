@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Stas App</title>
+    <link rel="stylesheet" href="static/styles.css">
+
+</head>
+<body>
+        <h1>Players</h1>
+    <ul>
+        {% for result in results %}
+            <a href="" ><li>{{ result.last_name }}, {{ result.first_name }}</li></a>
+        {% endfor %}
+    </ul>
+        <br>
+         <form method="GET"
+              action="{{ url_for('player') }}">
+            <input type="text"
+                   name="first_name"
+                   placeholder="First name">
+            <input type="text"
+                   name="last_name"
+                   placeholder="Last name">
+            <button type="submit">Search</button>
+        </form>
+</body>
+</html>
